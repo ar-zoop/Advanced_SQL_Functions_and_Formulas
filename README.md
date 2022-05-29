@@ -5,7 +5,6 @@ Certificate link:
 # Window Functions
 
 ## The Rank Function 
-example-
 The following snippet orders the sales by rank:
 
 ```
@@ -36,4 +35,25 @@ question-
 ```
 use upgrad;
 select quantityInStock, rank() over ( order by quantityInStock desc) as quantityRank from products;
+```
+
+## Rank vs Dense Rank
+The following snippet displays the difference in rank() and dense_rank() functions:
+```
+select ord_id, round(sales) as rounded sales, customer name, rank() over (order by discount desc) as discount_rank, dense_rank over (order by discount desc) as discount_dense_rank
+from market_fact_full
+inner join cust_dimen
+using (cust_id)
+where customer_name like 'Aron Smayling';
+```
+
+## Rank on Aggregate operations
+The following snippet displays customers in the decreasing order of the number of orders placed and their ranks:
+```
+select customer_name, count(ord_id) as ord_id,
+rank() over (order by count(ord_id) desc ) as order_count_rank
+from cust_dimen
+inner join market_fact_full
+using (cust_id)
+group by customer_name;
 ```
