@@ -5,3 +5,17 @@ use upgrad;
 select quantityInStock, rank() over ( order by quantityInStock desc) as quantityRank from products;
 ```
 
+# Question 2
+<img src="imag2.png">
+```
+use upgrad;
+with temp_table as(
+select orderNumber, (priceEach*quantityOrdered) as indiviualOrderAmount
+from Orderdetails
+order by orderNumber, indiviualOrderAmount desc
+)
+select *,
+sum(indiviualOrderAmount) over (partition by orderNumber order by orderNumber)
+from temp_table;
+```
+
