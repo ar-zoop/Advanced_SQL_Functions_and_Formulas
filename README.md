@@ -32,7 +32,7 @@ from Rank_Info
 where sale_amount_rank<=10;
 ```
 question-
-<img src="image.png">
+<img src="image1.png">
 ```
 use upgrad;
 select quantityInStock, rank() over ( order by quantityInStock desc) as quantityRank from products;
