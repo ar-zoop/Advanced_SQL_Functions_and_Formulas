@@ -1,5 +1,6 @@
 # Question 1
 <img src="image1.png">
+
 ```
 use upgrad;
 select quantityInStock, rank() over ( order by quantityInStock desc) as quantityRank from products;
@@ -7,6 +8,7 @@ select quantityInStock, rank() over ( order by quantityInStock desc) as quantity
 
 # Question 2
 <img src="imag2.png">
+
 ```
 use upgrad;
 with temp_table as(
