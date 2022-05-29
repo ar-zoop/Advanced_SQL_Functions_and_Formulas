@@ -72,4 +72,17 @@ from ship_table;
 ```
 
 ## Named Windows
+The following snippet uses the same condition named as 'w' for various window functions:
+```
+select ord_id, discount, customer_name,
+row_number() over w,
+rank() over w,
+dense_rank() over w
+from market_fact_full
+inner join cut_dimen
+using(cust_id)
+where customer_name='Aaron Smayling'
+window w as (order by Discount desc);
+```
 
+# Query Optimization

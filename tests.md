@@ -21,3 +21,14 @@ sum(indiviualOrderAmount) over (partition by orderNumber order by orderNumber)
 from temp_table;
 ```
 
+# Question 3
+<img src="image3.png">
+
+```
+select *,
+rank() over w as Rank,
+dense_rank() over w as Dense Rank,
+percent_rank() over w as Percent Rank
+from shipping_dimen
+window w as (partition by Ship_Mode order by count(*));
+```
