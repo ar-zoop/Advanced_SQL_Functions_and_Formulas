@@ -30,12 +30,6 @@ select ord  select ord_id, round(sales) as rounded sales, customer name, sale_am
 from Rank_Info
 where sale_amount_rank<=10;
 ```
-question-
-<img src="image1.png">
-```
-use upgrad;
-select quantityInStock, rank() over ( order by quantityInStock desc) as quantityRank from products;
-```
 
 ## Rank vs Dense Rank
 The following snippet displays the difference in rank() and dense_rank() functions:
@@ -57,3 +51,6 @@ inner join market_fact_full
 using (cust_id)
 group by customer_name;
 ```
+
+## Partitioning
+
