@@ -32,3 +32,19 @@ percent_rank() over w as Percent Rank
 from shipping_dimen
 window w as (partition by Ship_Mode order by count(*));
 ```
+
+# Question 4
+<img src="image4.png">
+
+```
+use upgrad;
+select name,salary,
+case
+    when salary <=2.5 then 'A'
+    when salary> 2.5 and salary<=5 then 'B'
+    when salary> 5 and salary <=10 then 'C'
+    else 'D'
+end as 'Tax Slab'
+from Salaries;
+```
+

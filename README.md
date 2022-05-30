@@ -86,3 +86,29 @@ window w as (order by Discount desc);
 ```
 
 # Query Optimization
+## Indexing
+It is created on the columns that are frequently used in your where clause.
+
+Index statement:
+```
+create index
+```
+
+## Join vs Nested Queries
+As long as the selection is being performed on indexes, both are good. The query processor can convert a join into a nested query and vice versa for optimized performance. This isn't our task to worry about.
+
+# Programming Constructs and Stored Functions
+
+## Case Statement 
+The following snippet shows and example for using case statement. It is basically the if then else clause of SQL. It will display a column and show the respective aliases under respective conditions:
+
+```
+select Market_fact_id, profit
+case (
+    when profit< -500 then 'Huge loss'
+    when profit between -500 to 0 then 'Bearable loss'
+    when profit between 0 to 500 then 'Decent profit'
+    else 'Huge profit'
+end) as market_fact_report
+from market_fact_full;
+```
