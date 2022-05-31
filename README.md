@@ -135,3 +135,37 @@ select *,
 end) as customer_type
 from raw_file;
 ```
+
+## Stored Functions
+
+The following snippets demonstrates the use of functions in sql:
+```
+delimiter $$
+
+create function productStatus(profit int)
+returns varchar (25) deterministic
+
+begin
+    declare market_fact_report varchar (25);
+    if profit<-500 then
+        set market_fact_report='huge loss';
+    elseif(profit>=-500 and profit < 0) then
+        set market_fact_report='bearable loss';
+    elseif(profit>=0 and profit<500) then
+        set market_fact_report='decent profit';
+    else
+        set market_fact_report='great profit';
+    end if;
+    return market_fact_report;
+end; $$
+
+delimiter ;
+
+select market_fact_id, profit, productstatus(profit) as market_fact_report
+from market_fact_full;
+```
+Meaning of keywords used in the above code:
+1. deterministic= the function returns the same value for the same input
+2. delimiter $$ = the default delimiter is ';' and since ';' is being used in the code we cannot use ';' as the delimiter for sql. hence we change the delimiter to $$.
+3. declare= creates a variable
+4. set= stores a value in the variable

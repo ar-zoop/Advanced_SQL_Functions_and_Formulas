@@ -48,3 +48,20 @@ end as 'Tax Slab'
 from Salaries;
 ```
 
+# Question 5
+<img src="image5.png">
+
+```
+use upgrad;
+
+# Write your code below
+select *,
+(case 
+    when salary<=2.5 then 0
+    when salary>2.5 and salary<=5 then round((5/100)*(((salary*100000)-250000)))
+    when salary>5 and salary<=10 then round(12500+(20/100*(((salary*100000)-500000))))
+    else round(112500 +((30/100)*(((salary*100000)-1000000))))
+end)as `Tax Amount`
+from salaries;
+```
+
