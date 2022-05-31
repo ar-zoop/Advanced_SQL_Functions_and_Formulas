@@ -166,7 +166,7 @@ from market_fact_full;
 ```
 Meaning of keywords used in the above code:
 1. deterministic= the function returns the same value for the same input
-2. delimiter '$$'
-3.  = the default delimiter is ';' and since ';' is being used in the code we cannot use ';' as the delimiter for sql. hence we change the delimiter to '$$'.
+2. delimiter '$$' 
+ = the default delimiter is ';' and since ';' is being used in the code we cannot use ';' as the delimiter for sql. hence we change the delimiter to '$$'.
 4. declare= creates a variable
 5. set= stores a value in the variable
