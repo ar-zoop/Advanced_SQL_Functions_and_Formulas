@@ -100,7 +100,7 @@ As long as the selection is being performed on indexes, both are good. The query
 # Programming Constructs and Stored Functions
 
 ## Case Statement 
-The following snippet shows and example for using case statement. It is basically the if then else clause of SQL. It will display a column and show the respective aliases under respective conditions:
+The following snippet shows an example for using case statement. It is basically the if then else clause of SQL. It will display a column and show the respective aliases under respective conditions:
 
 ```
 select Market_fact_id, profit
@@ -111,4 +111,27 @@ case (
     else 'Huge profit'
 end) as market_fact_report
 from market_fact_full;
+```
+The following snippet shows a complicated version of a case statement. Top 20% of customers get gold, next 35% get silver, the rest get bronze.
+```
+with raw_file as(
+    with raw_data as(
+        select cust_id, customer_name, round(sum(sales)) as total_sales
+        from market_fact_full
+        inner join cust_dimen
+        using(cust_id)
+        group by cust_id
+        order by total_sales desc
+    )
+    select *,
+    percent_rank() over (order by total_sales desc) as 'rank1'
+    from raw_data
+)
+select *,
+(case 
+    when rank1<0.2 then 'Gold'
+    when rank1 between 0.2 and 0.55 then 'Silver'
+    else 'Bronze'
+end) as customer_type
+from raw_file;
 ```
