@@ -1,8 +1,8 @@
 Below are all the concepts with in course queries I learnt during my "Advanced SQL: Learn SQL Functions and Formulas" from upGrad.
-asdfghjhgfxc
+
 Check out the other .md files for the rest of the content. 
 
-Certificate link: asdfgvhjn
+Certificate link: 
 
 # Window Functions
 
