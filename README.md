@@ -2,7 +2,7 @@ Below are all the concepts with in course queries I learnt during my "Advanced S
 asdfghjhgfxc
 Check out the other .md files for the rest of the content. 
 
-Certificate link: 
+Certificate link: asdfgvhjn
 
 # Window Functions
 
